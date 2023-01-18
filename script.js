@@ -83,13 +83,15 @@ const getBooks = () => {
     .then((res) => res.json())
     .then((data) => {
       const container = document.querySelector(".container")
-      const arrayOfBooks = data.map(({title, category, img}) => {
+      const arrayOfBooks = data.map(({title, category, img, price}) => {
         return `
-          <div class="col-3">
+          <div class="col-3 d-flex align-items-stretch">
                   <div class="card">
                      <img src="${img}" class="card-img-top" alt="...">
                       <div class="card-body">
-                          <h5 class="card-title">${title} ${category}</h5>
+                          <h5 class="card-title">${title} ${category} </h5>
+                          <p>Price: ${price}$</p>
+
                       </div>
                         <button type="button" value="Click" class="btn btn-outline-success" id="addCart" onClick="addToCart(this)">Add to Cart</button>
                         <button type="button" value="Click" onClick="skipBook()" class="btn btn-outline-warning">Skip</button>
